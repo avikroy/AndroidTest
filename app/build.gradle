@@ -6,8 +6,9 @@ android {
         applicationId "com.example.developer.aapoc"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode System.getenv("BUILD_NUMBER") as Integer ?: 1
+        versionName System.getenv("BUILD_NUMBER") as String ?: "1"
+        project.ext.set("archivesBaseName", "ConnectMe-POC-" + versionCode)
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
